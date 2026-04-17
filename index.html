@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gopi Kishan | Performance Marketing Specialist</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations & Styles */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .metric-card:hover .metric-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .metric-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .funnel-layer {
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans selection:bg-primary-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="font-heading font-bold text-2xl tracking-tight text-dark">
+                    GK<span class="text-primary-600">.</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">About</a>
+                    <a href="#expertise" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Expertise</a>
+                    <a href="#metrics" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Performance</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Experience</a>
+                    <a href="#strategy" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Strategy</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-dark text-white text-sm font-medium rounded-full hover:bg-primary-600 transition-colors shadow-lg shadow-dark/20">Let's Talk</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-600" id="mobile-menu-btn">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white border-b border-slate-100 absolute w-full" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-md">About</a>
+                <a href="#expertise" class="block px-3 py-2 text-base font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-md">Expertise</a>
+                <a href="#metrics" class="block px-3 py-2 text-base font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-md">Performance</a>
+                <a href="#experience" class="block px-3 py-2 text-base font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-md">Experience</a>
+                <a href="#strategy" class="block px-3 py-2 text-base font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-md">Strategy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5NGExYjIiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djI2aDJWMzRoMjJWMzJIMzhWMEgzNnYzMkgwdiJoMjh6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-50 z-0"></div>
+        <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob z-0"></div>
+        <div class="absolute top-[20%] left-[-5%] w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-sm font-semibold mb-6 fade-up">
+                    <span class="flex h-2 w-2 rounded-full bg-primary-600"></span>
+                    <span>Meta & Google Ads Expert</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-heading font-extrabold text-dark tracking-tight leading-[1.1] mb-6 fade-up delay-100">
+                    Scaling revenue through <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-400">data-driven</span> performance marketing.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed fade-up delay-200">
+                    Hi, I'm <strong class="text-dark">Gopi Kishan</strong>. I specialize in full-funnel strategy execution, managing ₹40L+ monthly ad spends, and driving high-intent growth across international markets.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 fade-up delay-300">
+                    <a href="#metrics" class="inline-flex justify-center items-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-full hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/30">
+                        View Performance Metrics
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                    <a href="#contact" class="inline-flex justify-center items-center px-8 py-4 bg-white text-dark font-semibold rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 border-t border-slate-200 pt-10 fade-up delay-300">
+                <div>
+                    <div class="text-3xl font-heading font-bold text-dark mb-1">₹40L+</div>
+                    <div class="text-sm font-medium text-slate-500">Monthly Ad Spend</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-heading font-bold text-dark mb-1">7x-12x</div>
+                    <div class="text-sm font-medium text-slate-500">Average ROAS</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-heading font-bold text-dark mb-1">5+</div>
+                    <div class="text-sm font-medium text-slate-500">Years Experience</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-heading font-bold text-dark mb-1">30%</div>
+                    <div class="text-sm font-medium text-slate-500">Performance Lift</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Expertise -->
+    <section id="expertise" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+                <h2 class="text-sm font-bold tracking-wider text-primary-600 uppercase mb-3">Core Expertise</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">Mastering the Growth Engine</h3>
+                <p class="text-slate-600 text-lg">Focused on full-funnel optimization, high-intent targeting, and rigorous A/B testing.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Expertise Card 1 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-xl hover:border-primary-100 transition-all duration-300 fade-up group">
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary-600 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="target" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">Meta Ads Strategy</h4>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Full-funnel approach utilizing Broad/Interest targeting (TOF), engaged user retargeting (MOF), and BOF website visitor conversion.</p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-700">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Horizontal & Vertical Scaling</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Pixel & CAPI Integration</li>
+                    </ul>
+                </div>
+
+                <!-- Expertise Card 2 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-xl hover:border-primary-100 transition-all duration-300 fade-up delay-100 group">
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="search" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">Google Ads Mastery</h4>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Capturing high-intent users through Search, driving cross-channel scaling with PMax, and building awareness via YouTube.</p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-700">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Exact + Phrase Match Focus</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Intent-based Keyword Strategy</li>
+                    </ul>
+                </div>
+
+                <!-- Expertise Card 3 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-xl hover:border-primary-100 transition-all duration-300 fade-up delay-200 group">
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-emerald-500 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="mouse-pointer-click" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">CRO & Funnel Design</h4>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Designing and optimizing landing pages to ensure high-quality traffic converts effectively. Fixing bottlenecks systematically.</p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-700">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> A/B Testing</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> 20% Increase in Conversions</li>
+                    </ul>
+                </div>
+
+                <!-- Expertise Card 4 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-xl hover:border-primary-100 transition-all duration-300 fade-up group">
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="palette" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">Creative Strategy</h4>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Structured creative testing model (70% proven, 30% experimental). Heavy focus on hook testing, format testing, and messaging.</p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-700">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Problem-based Hooks</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Competitor Analysis (Ad Library)</li>
+                    </ul>
+                </div>
+
+                <!-- Expertise Card 5 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-xl hover:border-primary-100 transition-all duration-300 fade-up delay-100 group">
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">Data & Tracking</h4>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Decisions backed strictly by data. Comprehensive tracking setup to measure real business impact, not just vanity metrics.</p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-700">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> GA4 & Google Tag Manager</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> CPL, CAC & ROAS Tracking</li>
+                    </ul>
+                </div>
+
+                <!-- Expertise Card 6 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-xl hover:border-primary-100 transition-all duration-300 fade-up delay-200 group">
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-indigo-500 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="briefcase" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">Business Understanding</h4>
+                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Focus on lead quality over quantity. Deep understanding of trust building, longer decision cycles, and high-intent targeting.</p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-700">
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Educational Creatives</li>
+                        <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mr-2"></i> Lead-to-Customer Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive: Ad Strategies -->
+    <section class="py-20 bg-slate-900 text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-900/40 to-transparent z-0 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Meta Strategy Visual -->
+                <div class="fade-up">
+                    <h3 class="text-3xl font-heading font-bold mb-6 flex items-center">
+                        <span class="text-blue-400 mr-3"><i data-lucide="facebook" class="w-8 h-8"></i></span>
+                        Meta Full-Funnel Approach
+                    </h3>
+                    <p class="text-slate-300 mb-8 text-lg">A systematic approach to capture, engage, and convert audiences using data and highly-tested creatives.</p>
+                    
+                    <div class="space-y-4 font-medium">
+                        <!-- Funnel Layers -->
+                        <div class="relative w-full h-16 bg-blue-500/20 border border-blue-400/30 rounded-lg flex items-center justify-center overflow-hidden group">
+                            <div class="absolute left-0 top-0 h-full bg-blue-600/40 funnel-layer w-full"></div>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <span class="text-blue-200 text-xs font-bold uppercase tracking-wider">Top of Funnel (TOF)</span>
+                                <span class="text-white">Broad + Interest Targeting</span>
+                            </div>
+                        </div>
+                        <div class="relative w-5/6 mx-auto h-16 bg-purple-500/20 border border-purple-400/30 rounded-lg flex items-center justify-center overflow-hidden group">
+                            <div class="absolute left-0 top-0 h-full bg-purple-600/40 funnel-layer w-full"></div>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <span class="text-purple-200 text-xs font-bold uppercase tracking-wider">Middle of Funnel (MOF)</span>
+                                <span class="text-white">Engaged Users & Video Viewers</span>
+                            </div>
+                        </div>
+                        <div class="relative w-4/6 mx-auto h-16 bg-emerald-500/20 border border-emerald-400/30 rounded-lg flex items-center justify-center overflow-hidden group">
+                            <div class="absolute left-0 top-0 h-full bg-emerald-600/40 funnel-layer w-full"></div>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <span class="text-emerald-200 text-xs font-bold uppercase tracking-wider">Bottom of Funnel (BOF)</span>
+                                <span class="text-white">Retargeting (ATC, Visitors)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Strategy Content -->
+                <div class="fade-up delay-200">
+                    <div class="bg-slate-800/50 border border-slate-700 p-8 rounded-3xl backdrop-blur-sm">
+                        <h3 class="text-3xl font-heading font-bold mb-6 flex items-center">
+                            <span class="text-red-400 mr-3"><i data-lucide="search" class="w-8 h-8"></i></span>
+                            Google Intent-Based
+                        </h3>
+                        <p class="text-slate-300 mb-8 text-lg">Focusing on high-quality leads through strong user intent and precise keyword matching.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center text-blue-400 mr-4 shrink-0">
+                                    <i data-lucide="text-cursor-input" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-bold text-white mb-1">Search Campaigns</h5>
+                                    <p class="text-slate-400 text-sm">Targeting exact and phrase matches to capture direct conversions from high-intent queries.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center text-amber-400 mr-4 shrink-0">
+                                    <i data-lucide="layers" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-bold text-white mb-1">Performance Max (PMax)</h5>
+                                    <p class="text-slate-400 text-sm">Leveraging Google's AI for cross-channel scaling and maximizing conversion opportunities.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center text-red-400 mr-4 shrink-0">
+                                    <i data-lucide="youtube" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-bold text-white mb-1">YouTube Ads</h5>
+                                    <p class="text-slate-400 text-sm">Building awareness, trust, and educating the market to fuel the top of the funnel.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics & Performance Section -->
+    <section id="metrics" class="py-20 bg-primary-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+                <h2 class="text-sm font-bold tracking-wider text-primary-600 uppercase mb-3">Current Performance Metrics</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">Numbers That Drive Growth</h3>
+                <p class="text-slate-600 text-lg">Targeting international markets (US, Canada, Australia) with strict KPIs.</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Metric 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 metric-card fade-up">
+                    <div class="text-primary-500 mb-4 metric-icon"><i data-lucide="trending-up" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-heading font-extrabold text-dark mb-1">7x - 8x</div>
+                    <div class="text-sm font-medium text-slate-500 mb-2">Base ROAS</div>
+                    <div class="text-xs text-emerald-600 bg-emerald-50 inline-block px-2 py-1 rounded font-semibold">Up to 12x scaled</div>
+                </div>
+
+                <!-- Metric 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 metric-card fade-up delay-100">
+                    <div class="text-purple-500 mb-4 metric-icon"><i data-lucide="mouse-pointer-click" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-heading font-extrabold text-dark mb-1">2% - 4%</div>
+                    <div class="text-sm font-medium text-slate-500 mb-2">CTR (Retargeting)</div>
+                    <div class="text-xs text-slate-500 bg-slate-50 inline-block px-2 py-1 rounded font-semibold">1-2% Prospecting</div>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 metric-card fade-up delay-200">
+                    <div class="text-amber-500 mb-4 metric-icon"><i data-lucide="coins" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-heading font-extrabold text-dark mb-1">₹65 - ₹200</div>
+                    <div class="text-sm font-medium text-slate-500 mb-2">Average CPC</div>
+                    <div class="text-xs text-slate-500 bg-slate-50 inline-block px-2 py-1 rounded font-semibold">Intl. Benchmarks</div>
+                </div>
+
+                <!-- Metric 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 metric-card fade-up delay-300">
+                    <div class="text-emerald-500 mb-4 metric-icon"><i data-lucide="check-square" class="w-8 h-8"></i></div>
+                    <div class="text-3xl font-heading font-extrabold text-dark mb-1">1.5% - 3%</div>
+                    <div class="text-sm font-medium text-slate-500 mb-2">Conversion Rate</div>
+                    <div class="text-xs text-slate-500 bg-slate-50 inline-block px-2 py-1 rounded font-semibold">Landing Page Avg</div>
+                </div>
+            </div>
+
+            <!-- Proof / Case Study Block -->
+            <div class="mt-16 bg-white rounded-3xl p-8 lg:p-10 shadow-lg shadow-slate-200/50 border border-slate-100 fade-up">
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 lg:order-1 relative rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-slate-50 group">
+                        <!-- Using the provided filename. Added a fallback for the live preview environment. -->
+                        <img src="conversion g ads.jpeg" alt="3x Boost in ROAS in 30 Days" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x450/e2e8f0/475569?text=Screenshot:+conversion+g+ads.jpeg';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium flex items-center"><i data-lucide="bar-chart" class="w-5 h-5 mr-2 text-primary-400"></i> Google Ads Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm font-semibold mb-5">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i>
+                            <span>Proven Results</span>
+                        </div>
+                        <h4 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4 leading-tight">3x Boost in ROAS in Just 30 Days</h4>
+                        <p class="text-slate-600 mb-8 leading-relaxed text-lg">Scaling a high-budget campaign effectively requires aggressive optimization. Within a single month, strategic targeting and bid adjustments resulted in massive profitability and lead volume.</p>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-primary-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">Ad Spend (Cost)</div>
+                                <div class="text-2xl font-bold text-dark">₹847K</div>
+                            </div>
+                            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-emerald-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">Conversions</div>
+                                <div class="text-2xl font-bold text-emerald-600">2.84K</div>
+                            </div>
+                            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-primary-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">Cost / Conv.</div>
+                                <div class="text-2xl font-bold text-dark">₹299</div>
+                            </div>
+                            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-primary-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">Conv. Value / Cost</div>
+                                <div class="text-2xl font-bold text-primary-600">2.95</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Proof / Case Study Block (Meta Ads) -->
+            <div class="mt-8 bg-white rounded-3xl p-8 lg:p-10 shadow-lg shadow-slate-200/50 border border-slate-100 fade-up delay-100">
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 lg:order-2 relative rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-slate-50 group aspect-video">
+                        <!-- Add your Meta Ads screenshot here. Using a placeholder for now. -->
+                        <img src="meta-ads-screenshot.jpeg" alt="Meta Ads Dashboard Showing 5.4x ROAS" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x450/e2e8f0/475569?text=Screenshot+Placeholder';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium flex items-center"><i data-lucide="bar-chart" class="w-5 h-5 mr-2 text-blue-400"></i> Campaign Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-1">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold mb-5">
+                            <i data-lucide="activity" class="w-4 h-4"></i>
+                            <span>High-Volume Scaling</span>
+                        </div>
+                        <h4 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4 leading-tight">5.4x ROAS at Scale</h4>
+                        <p class="text-slate-600 mb-8 leading-relaxed text-lg">Maintaining high profitability while pushing significant volume. This campaign generated massive reach and over 285 orders with highly efficient unit economics.</p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">Ad Spend</div>
+                                <div class="text-2xl font-bold text-dark">₹3,93,509</div>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-emerald-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">Revenue</div>
+                                <div class="text-2xl font-bold text-emerald-600">₹21,37,500</div>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">Cost / Purchase</div>
+                                <div class="text-2xl font-bold text-dark">₹1,380</div>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                                <div class="text-sm text-slate-500 font-medium mb-1">ROAS</div>
+                                <div class="text-2xl font-bold text-blue-600">5.4x</div>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Metrics Pills -->
+                        <div class="flex flex-wrap gap-2 text-xs font-medium text-slate-500">
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">AOV: ₹7,500</span>
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">Orders: 285</span>
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">Conv. Rate: 2.7%</span>
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">CTR: 2.8%</span>
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">CPC: ₹37</span>
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">Clicks: 10.6K</span>
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">Impr: 3.8L</span>
+                            <span class="bg-slate-100 px-2.5 py-1.5 rounded border border-slate-200">Reach: 1.45L</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem Diagnosis -->
+            <div class="mt-16 bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/40 border border-slate-100 fade-up relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-64 h-64 bg-primary-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+                <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h4 class="text-2xl font-heading font-bold text-dark mb-4">How I Diagnose Problems</h4>
+                        <p class="text-slate-600 mb-6">Data points directly to the bottleneck. Here is my diagnostic framework:</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="mt-1 mr-3 text-red-500"><i data-lucide="alert-circle" class="w-5 h-5"></i></div>
+                                <div>
+                                    <span class="font-bold text-dark">Low CTR?</span>
+                                    <p class="text-sm text-slate-600">It's a creative or hook issue. Time to test new angles.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="mt-1 mr-3 text-amber-500"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
+                                <div>
+                                    <span class="font-bold text-dark">Good CTR, Low Conversion?</span>
+                                    <p class="text-sm text-slate-600">It's a landing page or offer issue. Optimize CRO and messaging match.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="mt-1 mr-3 text-emerald-500"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
+                                <div>
+                                    <span class="font-bold text-dark">High CAC?</span>
+                                    <p class="text-sm text-slate-600">Focus on improving targeting accuracy and BOF retargeting efficiency.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h5 class="font-bold text-dark mb-4 border-b border-slate-200 pb-2">The 3 Core Levers of ROAS</h5>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-slate-700">Better Creatives</span>
+                                <span class="text-sm font-bold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">Improves CTR</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-slate-700">Better Targeting</span>
+                                <span class="text-sm font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">Reduces Cost</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-slate-700">Better Landing Page</span>
+                                <span class="text-sm font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">Boosts CVR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-sm font-bold tracking-wider text-primary-600 uppercase mb-3">Professional Journey</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark">Work Experience</h3>
+            </div>
+
+            <div class="relative border-l-2 border-slate-200 ml-3 md:ml-0 md:pl-0 space-y-12">
+                
+                <!-- Experience 1 -->
+                <div class="relative pl-8 md:pl-0 fade-up">
+                    <div class="md:grid md:grid-cols-5 items-start">
+                        <div class="md:col-span-1 md:text-right md:pr-8 mb-2 md:mb-0">
+                            <span class="text-sm font-bold text-primary-600 bg-primary-50 px-3 py-1 rounded-full inline-block">Sep 2023 – Present</span>
+                        </div>
+                        <div class="md:col-span-4 relative">
+                            <!-- Timeline Dot -->
+                            <div class="absolute -left-[41px] md:-left-[9px] top-1.5 w-5 h-5 bg-white border-4 border-primary-600 rounded-full shadow-sm md:block hidden"></div>
+                            <div class="absolute -left-[41px] top-1.5 w-5 h-5 bg-white border-4 border-primary-600 rounded-full shadow-sm md:hidden"></div>
+                            
+                            <div class="bg-slate-50 border border-slate-100 p-6 rounded-2xl hover:shadow-lg transition-shadow">
+                                <h4 class="text-xl font-bold text-dark">Performance Marketing Specialist</h4>
+                                <h5 class="text-lg text-slate-600 mb-4 font-medium">La French Studio Paris</h5>
+                                <ul class="space-y-3 text-slate-600">
+                                    <li class="flex items-start">
+                                        <i data-lucide="arrow-right-circle" class="w-5 h-5 text-primary-500 mr-3 shrink-0 mt-0.5"></i>
+                                        <span>Managed <strong>₹40L+ monthly ad spend</strong> across Meta & Google.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="arrow-right-circle" class="w-5 h-5 text-primary-500 mr-3 shrink-0 mt-0.5"></i>
+                                        <span>Improved overall campaign performance by <strong>30%</strong> through precise targeting and creative iterations.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="arrow-right-circle" class="w-5 h-5 text-primary-500 mr-3 shrink-0 mt-0.5"></i>
+                                        <span>Increased conversions by <strong>20%</strong> via rigorous funnel optimization.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="arrow-right-circle" class="w-5 h-5 text-primary-500 mr-3 shrink-0 mt-0.5"></i>
+                                        <span>Executed advanced retargeting strategies to drastically improve acquisition efficiency.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="relative pl-8 md:pl-0 fade-up delay-100">
+                    <div class="md:grid md:grid-cols-5 items-start">
+                        <div class="md:col-span-1 md:text-right md:pr-8 mb-2 md:mb-0">
+                            <span class="text-sm font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full inline-block">Jun 2020 – Aug 2023</span>
+                        </div>
+                        <div class="md:col-span-4 relative">
+                            <!-- Timeline Dot -->
+                            <div class="absolute -left-[41px] md:-left-[9px] top-1.5 w-5 h-5 bg-white border-4 border-slate-300 rounded-full shadow-sm md:block hidden"></div>
+                            <div class="absolute -left-[41px] top-1.5 w-5 h-5 bg-white border-4 border-slate-300 rounded-full shadow-sm md:hidden"></div>
+                            
+                            <div class="bg-white border border-slate-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
+                                <h4 class="text-xl font-bold text-dark">Digital Marketing Executive</h4>
+                                <h5 class="text-lg text-slate-600 mb-4 font-medium">Bhardwaj Builders</h5>
+                                <ul class="space-y-3 text-slate-600">
+                                    <li class="flex items-start">
+                                        <i data-lucide="arrow-right-circle" class="w-5 h-5 text-slate-400 mr-3 shrink-0 mt-0.5"></i>
+                                        <span>Generated <strong>25% more leads</strong> via targeted Google & Meta Ads campaigns.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="arrow-right-circle" class="w-5 h-5 text-slate-400 mr-3 shrink-0 mt-0.5"></i>
+                                        <span>Improved CTR by <strong>15%</strong> through continuous A/B testing of ad copies and creatives.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="arrow-right-circle" class="w-5 h-5 text-slate-400 mr-3 shrink-0 mt-0.5"></i>
+                                        <span>Built and deployed conversion-focused landing pages and lead funnels from scratch.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy & Domain Section -->
+    <section id="strategy" class="py-20 bg-dark text-slate-300 relative overflow-hidden">
+        <!-- Abstract Shapes -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary-900 rounded-full mix-blend-screen filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-30 translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Safe Positioning -->
+                <div class="fade-up">
+                    <h3 class="text-3xl font-heading font-bold text-white mb-6">Adaptable Domain Expertise</h3>
+                    <p class="text-lg mb-8 leading-relaxed">
+                        While my core experience spans diverse industries, my methodology is universally applicable. <strong>Core performance principles remain the same regardless of the vertical.</strong> I am highly adaptable to new domains, including high-stakes sectors like Finance and Global Brands.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-800/60 border border-slate-700 p-5 rounded-xl">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-emerald-400 mb-3"></i>
+                            <h4 class="font-bold text-white mb-1">Trust Building</h4>
+                            <p class="text-sm text-slate-400">Crucial for longer decision cycles.</p>
+                        </div>
+                        <div class="bg-slate-800/60 border border-slate-700 p-5 rounded-xl">
+                            <i data-lucide="book-open" class="w-8 h-8 text-blue-400 mb-3"></i>
+                            <h4 class="font-bold text-white mb-1">Educational Content</h4>
+                            <p class="text-sm text-slate-400">Warming up cold, high-value leads.</p>
+                        </div>
+                        <div class="bg-slate-800/60 border border-slate-700 p-5 rounded-xl">
+                            <i data-lucide="filter" class="w-8 h-8 text-purple-400 mb-3"></i>
+                            <h4 class="font-bold text-white mb-1">Quality > Quantity</h4>
+                            <p class="text-sm text-slate-400">Optimizing for Lead-to-Customer conversion.</p>
+                        </div>
+                        <div class="bg-slate-800/60 border border-slate-700 p-5 rounded-xl">
+                            <i data-lucide="refresh-cw" class="w-8 h-8 text-amber-400 mb-3"></i>
+                            <h4 class="font-bold text-white mb-1">Strong Retargeting</h4>
+                            <p class="text-sm text-slate-400">Keeping brands top-of-mind over time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Approach -->
+                <div class="bg-primary-600 p-8 md:p-10 rounded-3xl text-white shadow-2xl fade-up delay-200">
+                    <h3 class="text-3xl font-heading font-bold mb-6">Final Positioning</h3>
+                    <p class="text-primary-100 text-lg mb-8">I am a result-driven performance marketer focused strictly on business impact, not vanity metrics. My goal is simple:</p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-center bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
+                            <div class="bg-white text-primary-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 shrink-0">1</div>
+                            <span class="text-xl font-medium">Scaling Revenue Safely</span>
+                        </li>
+                        <li class="flex items-center bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
+                            <div class="bg-white text-primary-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 shrink-0">2</div>
+                            <span class="text-xl font-medium">Improving ROAS Consistently</span>
+                        </li>
+                        <li class="flex items-center bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
+                            <div class="bg-white text-primary-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 shrink-0">3</div>
+                            <span class="text-xl font-medium">Reducing CAC Systems</span>
+                        </li>
+                        <li class="flex items-center bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20">
+                            <div class="bg-white text-primary-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl mr-4 shrink-0">4</div>
+                            <span class="text-xl font-medium">Building High-Performing Funnels</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-50 border-t border-slate-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <a href="#" class="font-heading font-bold text-3xl tracking-tight text-dark block mb-2">
+                    GK<span class="text-primary-600">.</span>
+                </a>
+                <p class="text-slate-500 font-medium text-sm">Performance Marketing Specialist</p>
+            </div>
+            
+            <div class="flex space-x-6 mb-6 md:mb-0">
+                <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
+                    <span class="sr-only">LinkedIn</span>
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-dark transition-colors">
+                    <span class="sr-only">Email</span>
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
+            </div>
+            
+            <div class="text-center md:text-right">
+                <a href="mailto:contact@example.com" class="inline-flex items-center justify-center px-6 py-3 bg-dark text-white font-medium rounded-full hover:bg-primary-600 transition-colors">
+                    Hire Me / Contact
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-200 text-center">
+            <p class="text-slate-400 text-sm">&copy; <span id="year"></span> Gopi Kishan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Sticky Navbar effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+
+        // Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach((elem) => {
+            observer.observe(elem);
+        });
+    </script>
+</body>
+</html>
